@@ -1,0 +1,64 @@
+docker build .
+docker run -p 3000:80 3764e811e06962
+docker stop pedantic_bhabha
+
+docker ps
+docker build .
+docker run -p 3000:80 050b71495f2d8f
+
+anny docker comand docker --help
+images:
+1.tag:  -t, docker tag....
+2.can be listed: docker images
+3.can be analyzed: docker image inspect
+4. can be removed : docker rmi, docker prune.
+
+Containers:
+1. can be named: --name
+2. can be configured in detail see  --help
+3. can be listed: docker ps
+4. can be removed: docker rm.
+
+docker ps
+docker ps -a 
+docker ps --help 
+docker start 'container name' // go in detach mode, not blocking the terminal
+docker run -p 8000/80 'image name' // go in attach mode.
+docker run -p 8000/80  -d 'image name' // will start container in detached mode
+
+docker attach kind_shaw // will atach again
+
+docker logs 'container name'
+
+follow mode:
+ -f
+ docker logs -f kind_shaw // display all past logs
+  docker start -a 'container name' // restart in attach mode
+
+docker ps
+
+31. Entering interactive mode 
+(python example)
+docker run  -i -t 'image id'// -i -t  can be   -it
+
+restarting interactiv mode:
+docker start -a -i 'container name'
+
+32. Deleting Images & Containers
+clean the containers listed
+docker rm 'container_name'// container must be stppoed before removal
+docker rm eloquent_visvesvaraya wizardly_poitras
+
+display images:
+docker images
+
+remove images:
+
+docker rmi 'image id'
+
+images can be removed only  if the containers that are usingthem are removed
+
+docker image prune // delete all unused images
+
+Automaticaly remove container when stopped
+--rm 
