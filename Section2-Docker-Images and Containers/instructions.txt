@@ -23,8 +23,8 @@ docker ps
 docker ps -a 
 docker ps --help 
 docker start 'container name' // go in detach mode, not blocking the terminal
-docker run -p 8000/80 'image name' // go in attach mode.
-docker run -p 8000/80  -d 'image name' // will start container in detached mode
+docker run -p 8000:80 'image name' // go in attach mode.
+docker run -p 8000:80  -d 'image name' // will start container in detached mode
 
 docker attach kind_shaw // will atach again
 
@@ -46,7 +46,7 @@ docker start -a -i 'container name'
 
 32. Deleting Images & Containers
 clean the containers listed
-docker rm 'container_name'// container must be stppoed before removal
+docker rm 'container_name'// container must be stoppoed before removal
 docker rm eloquent_visvesvaraya wizardly_poitras
 
 display images:
@@ -62,3 +62,47 @@ docker image prune // delete all unused images
 
 Automaticaly remove container when stopped
 --rm 
+
+34. inspecting images
+docker image inspect 'image id'
+
+35. Coppying files into & from a container
+
+comand coppy: cp
+dummy/test.txt file
+
+jovial_wescoff - python
+kind_shaw - node
+
+docker cp dummy/. jovial_wescoff:/test
+
+36. Naming and tagging Containers and Images
+Containers
+stop running container, running again with defined name.
+
+docker run --help
+
+docker run -p 3000:80 -d --rm --name goalsapp 050b71495f2d
+Images:
+ name:tag // <REPOSITORY>  <TAG>
+
+ docker build -t goals:latest .
+
+docker run -p 3000:80 --rm --name goalsapp goals:latest
+vigorous_snyder
+unruffled_bartik
+serene_easley
+priceless_torvalds
+busy_easley
+determined_goldwasser
+goofy_noether
+blissful_almeida
+jovial_wescoff
+inspiring_lumiere
+inspiring_yalow
+kind_shaw
+optimistic_shaw
+infallible_montalcini
+pedantic_bhabha
+pedantic_brown
+gallant_tesla
