@@ -1,0 +1,60 @@
+Create Dockerfile
+docker build -t feedback-node:latest .
+
+docker run -p 3000:80 -d --name feedback-app --rm feedback-node
+
+we can check the aplication on localhost:30000
+
+if we ada new title and a content this will be saved inside feedback folder from the container
+as awsome.txt
+ if we stop  dontainer will be deleted 
+ docker stop feedback-app
+ if we will start the container without -rm
+ the container will not be celeted after stopand after restart we willl find the file inside feedback folder
+
+docker run -p 3000:80 -d --name feedback-app  feedback-node
+
+docker stop feedback-app // filsystem from container not erased
+docker start feedback-app//
+Volumes - solution for persisting data.
+volumes - are folders on  host machine
+
+volume persist if a container is shotdown/removal, restarted/recreation
+a containe can write data in a volume and read data from it.
+
+VOLUME instruction
+VOLUM ["/app/feedback", ]
+
+docker build -t feedback-node:volumes .
+
+run the container
+
+
+stop container
+docker stop feedback-app
+
+remove container
+docker rm feedback-app
+
+docker run -p 3000:80 -d --name feedback-app --rm feedback-node:volumes
+
+on save application crash
+
+clear
+docker logs feedback-app
+
+after code modification, remove image
+docker rmi feedback-node:volumes
+
+49. Two types External Data Storages:
+anonimous
+named
+
+docker run -p 3000:80 -d --rm --name feedback-app -v feedback:/app/feedback feedback-node:volumes
+docker volume ls
+docker stop feedback-app
+
+data remained available after re - run
+
+you can clear them via docker volume rm VOL_NAME 
+or docker volume prune.
